@@ -1,0 +1,9 @@
+{
+    'description': 'description',
+    'files': {
+        'example.py': {
+            'content': '# example contents'
+        }
+    },
+    'public': True,
+}

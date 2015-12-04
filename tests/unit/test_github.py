@@ -3,8 +3,7 @@ import pytest
 from github3 import AuthenticationFailed, GitHubError
 from github3.github import GitHub
 
-from .helper import UnitHelper, UnitIteratorHelper
-
+from .helper import UnitHelper, UnitIteratorHelper, create_example_data_helper
 
 def url_for(path=''):
     """Simple function to generate URLs with the base GitHub URL."""
@@ -65,17 +64,11 @@ class TestGitHub(UnitHelper):
             'example.py': {'content': '# example contents'}
         })
 
+        get_gist_example_data = create_example_data_helper('create_gist_example')
+
         self.post_called_with(
             url_for('gists'),
-            data={
-                'description': 'description',
-                'files': {
-                    'example.py': {
-                        'content': '# example contents'
-                    }
-                },
-                'public': True,
-            }
+            data=get_gist_example_data()
         )
 
     def test_create_key(self):
@@ -84,10 +77,7 @@ class TestGitHub(UnitHelper):
 
         self.post_called_with(
             url_for('user/keys'),
-            data={
-                'title': 'key_name',
-                'key': 'key text'
-            }
+            data={'title': 'key_name', 'key': 'key text'}
         )
 
     def test_create_key_requires_a_key(self):
@@ -108,15 +98,9 @@ class TestGitHub(UnitHelper):
 
         self.post_called_with(
             url_for('user/repos'),
-            data={
-                'name': 'repo-name',
-                'description': '',
-                'homepage': '',
-                'private': False,
-                'has_issues': True,
-                'has_wiki': True,
-                'auto_init': False,
-                'gitignore_template': ''
+            data={'name': 'repo-name', 'description': '', 'homepage': '',
+                'private': False, 'has_issues': True, 'has_wiki': True,
+                'auto_init': False, 'gitignore_template': ''
             }
         )
 
