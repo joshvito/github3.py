@@ -8,7 +8,7 @@ from .helper import UnitHelper, UnitIteratorHelper, create_url_helper,
 
 url_for = create_url_helper('https://api.github.com/orgs/hapy')
 
-get_org_example_data = helper.create_example_data_helper('org2_example')
+get_org_example_data = create_example_data_helper('org2_example')
 
 class TestOrganization(UnitHelper):
     described_class = Organization

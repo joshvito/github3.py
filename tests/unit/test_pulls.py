@@ -8,8 +8,6 @@ from github3 import GitHubError
 from github3 import pulls
 
 get_pr_example_data = create_example_data_helper('pull_request_example')
-get_comment_example_data = create_example_data_helper('review_comment_example')
-get_pull_file_example_data = create_example_data_helper('pull_file_example')
 
 
 url_for = create_url_helper(
@@ -228,6 +226,7 @@ class TestReviewComment(UnitHelper):
     """Unit tests for the ReviewComment class."""
 
     described_class = pulls.ReviewComment
+    get_comment_example_data = create_example_data_helper('review_comment_example')
     example_data = get_comment_example_data()
 
     def test_reply(self):
@@ -251,6 +250,7 @@ class TestPullFile(UnitHelper):
     """Unit tests for the PullFile class."""
 
     described_class = pulls.PullFile
+    get_pull_file_example_data = create_example_data_helper('pull_file_example')
     example_data = get_pull_file_example_data()
 
     def test_contents(self):

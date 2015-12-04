@@ -7,7 +7,7 @@ from .helper import UnitHelper, UnitIteratorHelper, create_url_helper
 
 url_for = create_url_helper('https://api.github.com/teams/10')
 
-get_team_example_data = helper.create_example_data_helper('orgs_team_example')
+get_team_example_data =create_example_data_helper('orgs_team_example')
 
 class TestTeam(UnitHelper):
     described_class = Team
